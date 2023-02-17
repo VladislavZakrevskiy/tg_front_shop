@@ -1,7 +1,9 @@
 import { useEffect } from 'react';
+import { Route, Routes } from 'react-router-dom';
 import './App.css'
 import Header from './components/UI/header/Header';
-import { useTelegram } from './hooks/useTelegram';
+import Form from './pages/Form/Form';
+import ProductList from './pages/ProductList/ProductList';
 
 
 
@@ -9,14 +11,18 @@ const tg = window.Telegram.WebApp
 
 
 function App() {
-  const {onToggleButton} = useTelegram()
+
     useEffect(() => {
       tg.ready()
     }, [])
+
   return (
     <div className="App">
       <Header/>
-      <button onClick={onToggleButton}>toggle</button>
+      <Routes>
+            <Route index element={<ProductList/>}/>
+            <Route path='/form' element={<Form/>}/>
+        </Routes>
     </div>
   );
 }

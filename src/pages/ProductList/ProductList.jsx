@@ -52,14 +52,13 @@ const ProductList = () => {
   return (
     <div className='list'>
         
-        {// eslint-disable-next-line
-        products.map(item => {
-            <ProductItem
-                onAdd={onAdd}
-                product={item}
-                className='item'
-            />
-        })}
+        {products.map(item => (
+                <ProductItem
+                    product={item}
+                    onAdd={onAdd}
+                    className={'item'}
+                />
+            ))}
     </div>
   )
 }

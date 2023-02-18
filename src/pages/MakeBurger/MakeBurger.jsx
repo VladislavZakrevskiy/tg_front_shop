@@ -5,7 +5,7 @@ import axios from 'axios'
 
 const Form = () => {
 
-    const {tg, onClose} = useTelegram()
+    const {tg} = useTelegram()
     const [price, setPrice] = useState(0)    
     const [recept, setRecept] = useState('')
     const [title, setTitle] = useState('')

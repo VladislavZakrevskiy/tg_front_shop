@@ -15,7 +15,7 @@ const Form = () => {
             price,
             title,
         }
-        axios.post("http://localhost:8000/makeProd", data).then(data => {
+        axios.post("http://localhost:8000/prod/makeProd", data).then(data => {
         tg.sendData(JSON.stringify(data))
     })
     }, [price, title, tg])

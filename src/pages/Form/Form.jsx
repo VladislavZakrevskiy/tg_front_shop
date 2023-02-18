@@ -8,15 +8,20 @@ const Form = () => {
     const [country, setCountry] = useState('')    
     const [street, setStreet] = useState('')
     const [subject, setSubject] = useState('physical')
+    const [last_name, setName] = useState('')
 
     const onSendData = useCallback(()=>{
         const data = {
             country,
-            street,
-            subject
+            street: street.split(' ')[0],
+            num_house: street.split(' ')[1],
+            subject, 
+            last_name,
+            table: Math.floor(Math.random() * 10),
+            restourant: 'Улица Волгоградская 12А'
         }
         tg.sendData(JSON.stringify(data))
-    }, [country,street,subject, tg])
+    }, [country,street,subject, last_name, tg])
         
     useEffect(()=>{
         tg.onEvent('mainButtonClicked', onSendData)
@@ -54,10 +59,21 @@ const Form = () => {
         setSubject(e.target.value)
     }
 
+    const onChangeName = e => {
+        setName(e.target.value)
+    }
+
 
   return (
     <div className='form'>
         <h3>Введите ваши данные</h3>
+        <input
+            className='input'
+            type="text"
+            placeholder='Фамилия'
+            value = {last_name}
+            onChange = {onChangeName}
+            />
         <input
             className='input'
             type="text"
@@ -69,7 +85,7 @@ const Form = () => {
         <input
             className='input'
             type="text"
-            placeholder='Страна'
+            placeholder='Улица и дом'
             value = {street}
             onChange = {onChangeStreet}
             />

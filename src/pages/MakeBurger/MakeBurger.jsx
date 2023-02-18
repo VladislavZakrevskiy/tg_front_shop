@@ -5,7 +5,7 @@ import axios from 'axios'
 
 const Form = () => {
 
-    const {tg} = useTelegram()
+    const {tg, onClose} = useTelegram()
     const [price, setPrice] = useState(0)    
     const [recept, setRecept] = useState('')
     const [title, setTitle] = useState('')
@@ -16,6 +16,7 @@ const Form = () => {
             title,
         }
         axios.post("http://localhost:8000/prod/make", data).then(data => {
+        alert(data)
         tg.sendData(JSON.stringify(data))
     })
     }, [price, title, tg])

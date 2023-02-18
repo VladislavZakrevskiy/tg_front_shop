@@ -25,7 +25,7 @@ const ProductList = () => {
             totalPrice: getTotalPrice(addedItems),
             queryId
         }
-        axios.post('http://localhost:8000/web-data', JSON.stringify(data), {
+        axios.post('http://localhost:8000/web-data', data, {
         'Content-Type':'application/json'
     })
     }, [addedItems, queryId])

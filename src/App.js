@@ -4,6 +4,7 @@ import './App.css'
 import Header from './components/UI/header/Header';
 import Form from './pages/Form/Form';
 import ProductList from './pages/ProductList/ProductList';
+import MakeBurger from './pages/MakeBurger/MakeBurger'
 
 
 
@@ -22,6 +23,7 @@ function App() {
       <Routes>
             <Route index element={<ProductList/>}/>
             <Route path={'form'} element={<Form/>}/>
+            <Route path='makeBurg' element={<MakeBurger/>}/>
         </Routes>
     </div>
   );

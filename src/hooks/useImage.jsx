@@ -21,7 +21,7 @@ export const useImage = (id) => {
             setScreenshot("data:image/png;base64," + base64ImageString)
         }
         fetchData();
-    }, [])
+    }, [id])
 
     return screenShot
 }

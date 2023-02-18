@@ -2,6 +2,7 @@ import React, { useCallback, useEffect, useState } from 'react'
 import './ProductList.css'
 import ProductItem from '../../components/ProductItem/ProductItem'
 import { useTelegram } from '../../hooks/useTelegram'
+import axios from 'axios'
 
 const products = [
     {id: '1', title: 'Джинсы', price: 5000, description: 'Синего цвета, прямые'},
@@ -24,12 +25,10 @@ const ProductList = () => {
             totalPrice: getTotalPrice(addedItems),
             queryId
         }
-        fetch('http://localhost:8000/web-data', {
-        method:'POST',
-        headers: {
-            'Content-Type':'application/json'
-        },
+        axios.post('http://localhost:8000/web-data', {
         body: JSON.parse(data)
+    }, {
+        'Content-Type':'application/json'
     })
     }, [addedItems, queryId])
         

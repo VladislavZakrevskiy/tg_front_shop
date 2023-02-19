@@ -44,11 +44,11 @@ const ProductList = () => {
     }
 
     const onAdd = (product) => {
-        const alreadyAddded = addedItems.find(item => item.id === product.id)
+        const alreadyAddded = addedItems.find(item => item.prod_id === product.prod_id)
         let newItems = []
 
         if(alreadyAddded){
-            newItems = addedItems.filter(item => item.id === product.id)
+            newItems = addedItems.filter(item => item.prod_id === product.prod_id)
         }
         else {
             newItems = [...addedItems, product]

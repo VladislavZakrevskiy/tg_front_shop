@@ -15,8 +15,10 @@ const Form = () => {
             price,
             title,
         }
-        axios.post("http://localhost:8000/prod/make", data)
+        axios.post("http://localhost:8000/prod/make", data).then(data=>{
         tg.sendData(JSON.stringify(data))
+    })
+        
         }, [price, title, tg])
         
     useEffect(()=>{

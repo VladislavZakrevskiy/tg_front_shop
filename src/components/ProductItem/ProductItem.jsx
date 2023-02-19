@@ -9,14 +9,20 @@ const ProductItem = ({product, className, onAdd}) => {
         onAdd(product)
     }
 
-    const img = useImage(product.prod_id) 
+    const [img, isLoading] = useImage(product.prod_id)
 
   return (
     <div>
         <div className={'product ' + className}>
-            <div className ='img_container'>
-                <img className='img' src={img} alt='Наш продукт'/>
-            </div>
+            {
+                isLoading ?
+                <div className='loading'>
+
+                </div>
+                :   <div className ='img_container'>
+                        <img className='img' src={img} alt='Наш продукт'/>
+                    </div>
+            }
             <div className={'title'}>{product.title}</div>
             <div className={'price'}>
                 <span>{product.price} Руб.</span>

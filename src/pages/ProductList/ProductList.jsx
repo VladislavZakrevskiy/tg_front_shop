@@ -3,21 +3,47 @@ import './ProductList.css'
 import ProductItem from '../../components/ProductItem/ProductItem'
 import { useTelegram } from '../../hooks/useTelegram'
 import axios from 'axios'
+import SortBar from '../../components/UI/sortBar/sortBar'
+import useFetching from '../../hooks/useFetching'
+import MyLoader from '../../components/UI/MyLoader/MyLoader'
 
 
 
 const ProductList = () => {
     const {tg, queryId} = useTelegram()
     const [addedItems, setAddedItems] = useState([])
-    const [products, setProducts] = useState([])
+    let [products, setProducts] = useState([])
+    const [sort, setSort] = useState('все')
 
-    useEffect(()=>{
-        const fetchData = async () => {
-            const result = await axios.get('http://localhost:8000/prod/get')
+    const BasketHandle = () => {
+        setSort('Баскеты')
+    }
+
+    const BurgerHandle = () => {
+        setSort('Бургеры')
+    }
+
+    const AllHandle = async () => {
+        setSort('все')
+    }
+
+    const DrinkHandle = () => {
+        setSort('Напитки')
+    }
+
+    const [fetchData, isLoading] = useFetching(async () => {
+        const result = await axios.get('http://localhost:8000/prod/get')
+        if(sort === 'все'){
             setProducts(result.data.rows)
         }
+        else {
+            setProducts(result.data.rows.filter(a => a.category === sort))
+        }
+    })
+
+    useEffect(()=>{
         fetchData()
-    }, [])
+    }, [sort, fetchData])
 
     const onSendData = useCallback(()=>{
         const data = {
@@ -69,16 +95,30 @@ const ProductList = () => {
     
     
   return (
-    <div className='list'>
-        
-        {products.map(item => (
-                <ProductItem
-                    product={item}
-                    onAdd={onAdd}
-                    className={'item'}
-                />
-            ))}
+    <div className='prodList'>
+        <SortBar
+            AllHandle={AllHandle}
+            BasketHandle={BasketHandle}
+            BurgerHandle={BurgerHandle}
+            DrinkHandle={DrinkHandle}
+        />
+         
+         {
+            isLoading 
+            ? <MyLoader/>
+            : <div className='list'> 
+            {products.map(item => (
+                    <ProductItem
+                        product={item}
+                        onAdd={onAdd}
+                        className={'item'}
+                    />
+                ))}
+                </div>
+         }
+            
     </div>
+    
   )
 }
 

@@ -46,3 +46,10 @@
     color: var(--tg-theme-text-color);
     text-align: center;    
 }
+
+.loading {
+    width: 120px;
+    height: 120px;
+    background-color: rgba(128, 128, 128, .4);
+    border-radius: 10px;
+}

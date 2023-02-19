@@ -9,3 +9,10 @@
     margin-right: 10px;
     margin-bottom: 50px;
 }
+
+.prodList {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}

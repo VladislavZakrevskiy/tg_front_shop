@@ -10,15 +10,13 @@ const Form = () => {
     const [recept, setRecept] = useState('')
     const [title, setTitle] = useState('')
 
-    const onSendData = useCallback(()=>{
+    const onSendData = useCallback(async()=>{
         const data = {
             price,
             title,
         }
-        axios.post("http://localhost:8000/prod/make", data).then(data=>{
-        alert(data.data)
-    })
-        
+        const inf = await axios.post("http://localhost:8000/prod/make", data)
+        await tg.sendData(JSON.stringify(inf.data))
         }, [price, title, tg])
         
     useEffect(()=>{

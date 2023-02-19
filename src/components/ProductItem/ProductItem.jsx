@@ -1,5 +1,5 @@
 import React from 'react'
-import { useImage } from '../../hooks/useImage'
+// import { useImage } from '../../hooks/useImage'
 import Button from '../UI/button/button'
 import './ProductItem.css'
 
@@ -9,12 +9,12 @@ const ProductItem = ({product, className, onAdd}) => {
         onAdd(product)
     }
 
-    const img = useImage(product.id)
+    // const img = useImage(product.id)
 
   return (
     <div>
         <div className={'product ' + className}>
-            <img className='img' src={img} alt='Наш продукт'/>
+            {/* <img className='img' src={img} alt='Наш продукт'/> */}
             <div className={'title'}>{product.title}</div>
             <div className={'price'}>
                 <span>{product.price} Руб.</span>

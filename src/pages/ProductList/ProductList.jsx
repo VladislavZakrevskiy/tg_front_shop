@@ -43,7 +43,8 @@ const ProductList = () => {
 
     useEffect(()=>{
         fetchData()
-    }, [sort, fetchData])
+// eslint-disable-next-line
+    }, [sort])
 
     const onSendData = useCallback(()=>{
         const data = {

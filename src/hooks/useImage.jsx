@@ -4,14 +4,11 @@ import { useEffect, useState } from "react";
 
 export const useImage = (id) => {
     const [screenShot, setScreenshot] = useState(undefined)
-    const url = 'http://localhost:8000/images'
+    const url = 'http://localhost:8000/images/' + id
 
     useEffect(() => {
-        let data = {
-            id: id
-        }
         async function fetchData() {
-            const response = await axios.put(url,data, {
+            const response = await axios.get(url, {
                 headers: {
                     'Content-Type': 'application/json'
                 },
@@ -21,7 +18,7 @@ export const useImage = (id) => {
             setScreenshot("data:image/png;base64," + base64ImageString)
         }
         fetchData();
-    }, [id])
+    }, [id, url])
 
     return screenShot
 }

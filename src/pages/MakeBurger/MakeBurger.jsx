@@ -15,7 +15,7 @@ const Form = () => {
             price,
             title,
         }
-        const inf = await axios.post("http://localhost:8000/prod/make", data)
+        await axios.post("http://localhost:8000/prod/make", data)
         await tg.sendData(JSON.stringify(data))
         }, [price, title, tg])
         

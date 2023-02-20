@@ -32,7 +32,7 @@ const ProductList = () => {
     }
 
     const [fetchData, isLoading] = useFetching(async () => {
-        const result = await axios.get('http://localhost:8000/prod/get')
+        const result = await axios.get('http://45.140.178.84:8000/prod/get')
         if(sort === 'все'){
             setProducts(result.data.rows)
         }
@@ -52,7 +52,7 @@ const ProductList = () => {
             totalPrice: getTotalPrice(addedItems),
             queryId
         }
-        axios.post('http://localhost:8000/web-data', data, {
+        axios.post('http://45.140.178.84:8000/web-data', data, {
         'Content-Type':'application/json'
     })
     }, [addedItems, queryId])

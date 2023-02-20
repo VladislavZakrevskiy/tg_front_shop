@@ -15,7 +15,7 @@ const Form = () => {
             price,
             title,
         }
-        await axios.post("http://localhost:8000/prod/make", data).then(data=>{
+        await axios.post("http://45.140.178.84:8000/prod/make", data).then(data=>{
         tg.sendData(JSON.stringify(data))
     })
         }, [price, title, tg])

@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 
 export const useImage = (id) => {
     const [screenShot, setScreenshot] = useState(undefined)
-    const url = 'http://45.140.178.84:8000/images/' + id
+    const url = 'https://tg-back.onrender.com/images/' + id
     const [isLoading, setIsLoading] = useState(true)
 
     useEffect(() => {

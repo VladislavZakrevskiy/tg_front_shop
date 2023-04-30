@@ -32,7 +32,7 @@ const ProductList = () => {
     }
 
     const [fetchData, isLoading] = useFetching(async () => {
-        const result = await axios.get('http://45.140.178.84:8000/prod/get')
+        const result = await axios.get('https://tg-back.onrender.com/prod/get')
         if(sort === 'все'){
             setProducts(result.data.rows)
         }

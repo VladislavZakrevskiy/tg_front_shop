@@ -10,5 +10,5 @@
 <h3>node-telegram-bot-api</h3>
 <h3>=> Building tg-bots with web-interface based on React</h3>
 
-<h2>It's frontend, but there is <a href='https://github.com/VladislavZakrevskiy/tg-back-shop'>back-end</a></h2>
+<h2>It's frontend, but there is <a href='https://github.com/VladislavZakrevskiy/tg-back-shop'>backend</a></h2>
 
